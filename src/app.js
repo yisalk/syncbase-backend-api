@@ -10,6 +10,11 @@ const paymentController = require('./controllers/paymentController');
 
 connectDB();
 const app = express();
+
+// Trust proxy - Required for Vercel and other reverse proxies
+// This allows Express to correctly identify the client's IP address
+app.set('trust proxy', true);
+
 security(app);
 app.use(limiter);
 
